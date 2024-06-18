@@ -1,0 +1,140 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .App {
+    text-align: center;
+  }
+  
+  .filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  
+  .filter-group {
+    margin: 10px;
+    position: relative;
+  }
+  
+  .filter-group h4 {
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    display: flex;
+    flex-direction: column; /* Change to column to display vertically */
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    position: absolute;
+    z-index: 1;
+    padding: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .button {
+    padding: 10px;
+    margin: 5px 0; /* Adjust margins for vertical display */
+    border: none;
+    background-color: #ddd;
+    cursor: pointer;
+  }
+  
+  .button.active {
+    background-color: #333;
+    color: white;
+  }
+  
+  .items-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    background-color: #f9f9f9;
+    position: relative;
+  }
+  
+  .item .category {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .wishlist-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #800000; /* Dark Red color for the star */
+  }
+  
+  .wishlist-button.active {
+    color: #333; /* Dark color for active star */
+  }
+  
+  .expanded-profile {
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+  
+  .header {
+    background-color: #800000; /* Dark Red background */
+    color: white; /* White text */
+    padding: 10px;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .logo {
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .nav-links {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-links li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    color: white; /* White text for links */
+  }
+  
+  .nav-links li button {
+    background: none;
+    border: none;
+    color: white; /* White text for button */
+    cursor: pointer;
+  }
+  
+  footer {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-top: 1px solid #dee2e6;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
+  
