@@ -8,7 +8,8 @@ const userSchema = new mongoose.Schema({
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    category: { type: String, required: true, enum: ["student", "faculty"] }
+    category: { type: String, required: true, enum: ["student", "faculty"] },
+    wishlist: [{ type: mongoose.Schema.Types.ObjectId, ref: "Student" }]
 });
 
 userSchema.methods.generateAuthToken = function () {

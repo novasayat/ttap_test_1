@@ -1,37 +1,65 @@
 /* Updated CSS for Main component */
-.navbar {
+
+.header {
+    background-color: hsl(355, 80%, 25%); /* Darker background for better contrast */
+    padding: 10px 20px; /* More padding for a spacious look */
+    border-bottom: 2px solid #dee2e6; /* Slightly thicker border for emphasis */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar {
     height: 70px;
-    background-color: #3bb19b;
+    background-color: hsl(355, 80%, 25%); /* Uniform red background */
     display: flex;
     align-items: center;
-    padding: 0 20px;
-}
-
-.nav_links {
+    padding: 0 40px;
+    width: 100%; /* Full width to distribute space properly */
+    justify-content: flex-start; /* Align items to the start */
+  }
+  
+  .nav_links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
     flex: 1; /* Distribute remaining space */
-}
-
-.nav_links a {
-    color: white;
-    font-size: 18px;
+    justify-content: flex-start; /* Align nav links to the start */
+    margin-left: 20px; /* Add margin to push the nav links to the right */
+  }
+  
+  .nav_links li {
+    margin-right: 30px; /* Increased spacing between links */
+  }
+  
+  .nav_links li:last-child {
+    margin-right: 0; /* Remove margin from the last item */
+  }
+  
+  .nav_links a {
     text-decoration: none;
-    margin: 0 15px;
-}
-
-.nav_links a:hover {
-    text-decoration: underline;
-}
-
-.user_menu {
+    color: #f8f9fa; /* Lighter color for better readability */
+    font-weight: bold; /* Bold text for better emphasis */
+    transition: color 0.3s; /* Smooth transition for color change */
+    font-size: 18px;
+  }
+  
+  .nav_links a:hover {
+    color: #adb5bd; /* Hover color for links */
+  }
+  
+  .user_menu {
     position: relative;
     display: flex; /* Use flexbox for alignment */
     align-items: center; /* Align items vertically */
-    color: white;
-    font-size: 18px;
+    color: #f8f9fa; /* Match the color with nav links */
+    font-size: 18px; /* Match the font size with nav links */
+    font-weight: bold; /* Match the font weight with nav links */
     cursor: pointer;
-}
-
-.dropdown_content {
+  }
+  
+  .dropdown_content {
     display: none;
     position: absolute;
     right: 0;
@@ -40,32 +68,39 @@
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-}
-
-.user_menu:hover .dropdown_content {
+  }
+  
+  .user_menu:hover .dropdown_content {
     display: block;
-}
-
-.dropdown_content p {
+  }
+  
+  .dropdown_content p {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     margin: 0;
-}
-
-.dropdown_content p:hover {
+  }
+  
+  .dropdown_content p:hover {
     background-color: #ddd;
-}
-
-/* CSS for the down arrow symbol */
-.down_arrow {
+  }
+  
+  /* CSS for the down arrow symbol */
+  .down_arrow {
     margin-left: 5px;
-}
-
-/* Change color of logout link on hover */
-.dropdown_content p:nth-child(2):hover {
+  }
+  
+  /* Change color of logout link on hover */
+  .dropdown_content p:nth-child(2):hover {
     color: lightcoral;
-}
-
-
+  }
+  
+  .logo {
+    font-family: 'Your Chosen Font', sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+    color: #aeb107; /* Example color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Example text shadow */
+    white-space: nowrap; /* Prevent wrapping */
+  }  
