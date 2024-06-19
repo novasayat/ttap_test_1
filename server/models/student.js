@@ -17,6 +17,6 @@ const studentSchema = new mongoose.Schema({
   coverLetter: { type: String, required: true }
 });
 
-const Student = mongoose.model("Student", studentSchema);
+const Student = mongoose.model("studentprofiles", studentSchema);
 
 module.exports = Student;
