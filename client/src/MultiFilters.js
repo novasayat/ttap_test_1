@@ -40,6 +40,20 @@ function MultiFilters({ onWishlistUpdate, wishlist }) {
     filterItems();
   }, [selectedFilters, students]);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const filtersContainer = document.querySelector('.filters-container');
+      if (filtersContainer && !filtersContainer.contains(event.target)) {
+        closeDropdowns();
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
   const fetchFilters = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -134,6 +148,16 @@ function MultiFilters({ onWishlistUpdate, wishlist }) {
     onWishlistUpdate(updatedWishlist);
   };
 
+  const handleClearAllFilters = () => {
+    setSelectedFilters({
+      degree: [],
+      courseName: [],
+      enrollmentDate: [],
+      areasOfInterest: [],
+      hoursAtSmith: []
+    });
+  };
+
   return (
     <div>
       <div className="filters-container">
@@ -142,7 +166,12 @@ function MultiFilters({ onWishlistUpdate, wishlist }) {
             <h4 onClick={(e) => { e.stopPropagation(); toggleDropdown(filterCategory); }}>
               {filterCategory.charAt(0).toUpperCase() + filterCategory.slice(1).replace(/([A-Z])/g, ' $1')}
             </h4>
-            {dropdowns[filterCategory] && (
+            <CSSTransition
+              in={dropdowns[filterCategory]}
+              timeout={300}
+              classNames="expand"
+              unmountOnExit
+            >
               <div className="dropdown">
                 {filters[filterCategory].map((value, idx) => (
                   <button
@@ -154,9 +183,10 @@ function MultiFilters({ onWishlistUpdate, wishlist }) {
                   </button>
                 ))}
               </div>
-            )}
+            </CSSTransition>
           </div>
         ))}
+        <button className="clear-filters-button" onClick={handleClearAllFilters}>Clear Filters</button>
       </div>
 
       <div className="items-container">
