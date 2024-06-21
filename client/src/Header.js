@@ -1,3 +1,5 @@
+// We are not using this file for header but the  src->components-> Main->index.jsx file
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css'; // Import the CSS file
@@ -7,7 +9,7 @@ const Header = () => {
     <header className="header">
       <div className="logo-container">
         <h1 className="logo">Smith Hire</h1>
-        <img src = "/robert-h-smith-school-of-business logo.png" alt="Robert H. Smith School of Business" className="smith-logo" />
+        <img src="/robert-h-smith-school-of-business-logo.png" alt="Robert H. Smith School of Business" className="smith-logo" />
       </div>
       <nav>
         <ul className="nav-links">

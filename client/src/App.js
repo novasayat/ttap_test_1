@@ -40,7 +40,7 @@ function App() {
                 element={<Layout><MultiFilters onWishlistUpdate={handleWishlistUpdate} wishlist={wishlist} /></Layout>}
               />
               <Route
-                path="/stundent profile"
+                path="/profile"
                 element={<Layout><StudentView /></Layout>}
               />
               <Route

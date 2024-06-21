@@ -1,5 +1,8 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Helvetica Neue', Arial, sans-serif;;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
 }
 
 .App {
@@ -10,6 +13,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 20px;
+  justify-content: center;
 }
 
 .filter-group {
@@ -19,6 +23,13 @@ body {
 
 .filter-group h4 {
   cursor: pointer;
+  margin: 0;
+  padding: 5px 10px; /* Reduced padding */
+  background-color: #800000;
+  color: white;
+  border-radius: 5px;
+  font-size: 14px; /* Smaller font size */
+  transition: background-color 0.3s;
 }
 
 .dropdown {
@@ -30,19 +41,22 @@ body {
   z-index: 1;
   padding: 10px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
 
 .button {
-  padding: 10px;
-  margin: 5px 0; /* Adjust margins for vertical display */
+  padding: 8px; /* Reduced padding */
+  margin: 3px 0; /* Adjust margins for vertical display */
   border: none;
   background-color: #ddd;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
+  border-radius: 5px;
+  font-size: 14px; /* Smaller font size */
 }
 
 .button:hover {
-  background-color: #333;
+  background-color: #800000;
   color: white;
 }
 
@@ -54,15 +68,24 @@ body {
 .items-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .item {
   border: 1px solid #ddd;
-  padding: 10px;
-  margin: 10px;
-  width: 200px;
-  background-color: #f9f9f9;
+  padding: 15px;
+  margin: 15px;
+  width: 250px;
+  background-color: white;
   position: relative;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .item .category {
@@ -75,6 +98,13 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
+}
+
+.profile-header p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
 }
 
 .wishlist-button {
@@ -83,17 +113,27 @@ body {
   font-size: 20px;
   cursor: pointer;
   color: #800000; /* Dark Red color for the star */
+  transition: color 0.3s;
 }
 
 .wishlist-button.active {
   color: #333; /* Dark color for active star */
 }
 
-.expanded-profile {
+.wishlist-button:hover {
+  color: #555; /* Lighten color on hover */
+}
+
+.basic-info, .expanded-profile {
   background-color: #f9f9f9;
-  border-top: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
   margin-top: 10px;
-  padding-top: 10px;
+}
+
+.basic-info p, .expanded-profile p {
+  margin: 5px 0;
+  color: #333;
 }
 
 .header {
@@ -192,7 +232,7 @@ footer {
 }
 
 .clear-filters-button {
-  padding: 10px;
+  padding: 5px 10px; /* Reduced padding */
   margin: 10px 0; /* Adjust margins for vertical display */
   border: none;
   background: none;
@@ -200,3 +240,5 @@ footer {
   color: #000408; /* Link color */
   text-decoration: Bold;
 }
+
+

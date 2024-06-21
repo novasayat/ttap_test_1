@@ -1,59 +1,69 @@
 .header {
-    background-color: hsl(355, 80%, 25%); /* Darker background for better contrast */
-    padding: 10px 20px; /* More padding for a spacious look */
-    border-bottom: 2px solid #dee2e6; /* Slightly thicker border for emphasis */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .nav-links {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .nav-links li {
-    margin-right: 30px; /* Increased spacing between links */
-  }
-  
-  .nav-links li:last-child {
-    margin-right: 0; /* Remove margin from the last item */
-  }
-  
-  .nav-links li a {
-    text-decoration: none;
-    color: #f8f9fa; /* Lighter color for better readability */
-    font-weight: bold; /* Bold text for better emphasis */
-    transition: color 0.3s; /* Smooth transition for color change */
-  }
-  
-  .nav-links li a:hover {
-    color: #adb5bd; /* Hover color for links */
-  }
-  
-  .nav-links li button {
-    background: none;
-    border: none;
-    color: #5297dc; /* Lighter color for consistency with links */
-    cursor: pointer;
-    font-weight: bold; /* Bold text for better emphasis */
-    transition: color 0.3s; /* Smooth transition for color change */
-  }
-  
-  .nav-links li button:hover {
-    color: #adb5bd; /* Hover color for button */
-  }
-
-  .logo {
-  font-family: 'Your Chosen Font', sans-serif;
-  font-size: 36px;
-  font-weight: bold;
-  color: #aeb107; /* Example color */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Example text shadow */
-  /* Add any other styles you want to apply to the logo here */
+  background-color: hsl(355, 80%, 25%);
+  padding: 15px 30px; /* More padding for a spacious look */
+  border-bottom: 3px solid #dee2e6; /* Slightly thicker border for emphasis */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
-  
-  
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.smith-logo {
+  width: 50px; 
+  height: auto;
+  margin-left: 10px; /* Space between text logo and image but can't see the image as of now..  */
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  margin-right: 30px;
+}
+
+.nav-links li:last-child {
+  margin-right: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #f8f9fa;
+  font-weight: bold;
+  transition: color 0.3s;
+  font-size: 16px; /* Slightly larger text */
+}
+
+.nav-links li a:hover {
+  color: #adb5bd;
+}
+
+.nav-links li button {
+  background: none;
+  border: none;
+  color: #f8f9fa;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.3s;
+  font-size: 16px;
+}
+
+.nav-links li button:hover {
+  color: #adb5bd;
+}
+
+.logo {
+  font-family: 'Times New Roman', serif; /* Choose a classic and professional font */
+  font-size: 36px;
+  font-weight: bold;
+  color: #ffcd00; /* Example color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Example text shadow */
+}

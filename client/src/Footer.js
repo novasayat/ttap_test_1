@@ -1,19 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const footerStyle = {
   backgroundColor: '#f8f9fa',
   padding: '10px',
   borderTop: '1px solid #dee2e6',
-  position: 'fixed',
-  bottom: 0,
-  width: '100%',
   textAlign: 'center',
 };
 
 const Footer = () => {
+  useEffect(() => {
+    const handleScroll = () => {
+      const footer = document.querySelector('footer');
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        footer.style.position = 'static';
+      } else {
+        footer.style.position = 'fixed';
+        footer.style.bottom = '0';
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <footer style={footerStyle}>
-      <p>&copy; 2024 Your Company. All rights reserved.</p>
+      <p>&copy; University of Maryland. All rights reserved.</p>
     </footer>
   );
 };

@@ -34,11 +34,12 @@ const Main = () => {
     <div className={styles.main_container}>
       <header className={styles.header}>
         <h1 className={styles.logo}>Smith Hire</h1>
+        {/* <img src="/robert-h-smith-school-of-business-logo.png" alt="Robert H. Smith School of Business" className="smith-logo" /> */}
         <nav className={styles.navbar}>
           <ul className={styles.nav_links}>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/profile">Profile</Link></li>
-            <li><Link to="/faculty">Faculty View</Link></li>
+            {/* <li><Link to="/faculty">Faculty View</Link></li> */}
             <li><Link to="/wishlist">Wishlist</Link></li> 
           </ul>
           <div className={styles.user_menu}>

@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+ /* For footer: */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 4;
+  padding-bottom: 60px; 
+}
+
+footer {
+  width: 100%;
+}
+

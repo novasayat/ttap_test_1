@@ -124,6 +124,7 @@ function MultiFilters({ onWishlistUpdate, wishlist }) {
         (selectedFilters.hoursAtSmith.length === 0 || selectedFilters.hoursAtSmith.includes(item.hoursAtSmith))
       );
     });
+    tempItems.sort((a, b) => a.fullName.localeCompare(b.fullName)); // Sort filtered items alphabetically by fullName
     setFilteredItems(tempItems);
   };
 
@@ -201,20 +202,22 @@ function MultiFilters({ onWishlistUpdate, wishlist }) {
                 {wishlist.some(wishItem => wishItem._id === item._id) ? '★' : '☆'}
               </button>
             </div>
+            <div className="basic-info">
+              <p className="category">Degree: {item.degree}</p>
+              <p className="category">Course Name: {item.courseName}</p>
+              <p className="category">Graduation Date: {new Date(item.graduationDate).toLocaleDateString()}</p>
+              <p className="category">Email: {item.email}</p>
+              <p className="category">Hours at Smith: {item.hoursAtSmith}</p>
+            </div>
             <TransitionGroup>
               {expandedProfiles.includes(idx) && (
                 <CSSTransition key={idx} timeout={300} classNames="expand">
                   <div className="expanded-profile">
                     <p className="category">UID: {item.uid}</p>
-                    <p className="category">Degree: {item.degree}</p>
-                    <p className="category">Course Name: {item.courseName}</p>
-                    <p className="category">Enrollment Date: {item.enrollmentDate}</p>
-                    <p className="category">Graduation Date: {new Date(item.graduationDate).toLocaleDateString()}</p>
-                    <p className="category">Email: {item.email}</p>
-                    <p className="category">Education: {item.education}</p>
-                    <p className="category">Work Experience: {item.workExperience}</p>
                     <p className="category">Areas of Interest: {item.areasOfInterest}</p>
-                    <p className="category">Hours at Smith: {item.hoursAtSmith}</p>
+                    <p className="category">Enrollment Date: {item.enrollmentDate}</p>                    
+                    <p className="category">Education: {item.education}</p>
+                    <p className="category">Work Experience: {item.workExperience}</p>                  
                     <p className="category">Hours Other Jobs: {item.hoursOtherJobs}</p>
                     <p className="category">Resume: <a href={item.resume} target="_blank" rel="noopener noreferrer">View Resume</a></p>
                     <p className="category">Cover Letter: <a href={item.coverLetter} target="_blank" rel="noopener noreferrer">View Cover Letter</a></p>
