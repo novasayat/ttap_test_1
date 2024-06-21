@@ -51,12 +51,19 @@ body {
   background-color: #ddd;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
+<<<<<<< HEAD
   border-radius: 5px;
   font-size: 14px; /* Smaller font size */
 }
 
 .button:hover {
   background-color: #800000;
+=======
+}
+
+.button:hover {
+  background-color: #333;
+>>>>>>> b58de56de4900e64d4b3f812251cbb4c17a78d4f
   color: white;
 }
 
@@ -232,7 +239,11 @@ footer {
 }
 
 .clear-filters-button {
+<<<<<<< HEAD
   padding: 5px 10px; /* Reduced padding */
+=======
+  padding: 10px;
+>>>>>>> b58de56de4900e64d4b3f812251cbb4c17a78d4f
   margin: 10px 0; /* Adjust margins for vertical display */
   border: none;
   background: none;
@@ -240,5 +251,8 @@ footer {
   color: #000408; /* Link color */
   text-decoration: Bold;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> b58de56de4900e64d4b3f812251cbb4c17a78d4f

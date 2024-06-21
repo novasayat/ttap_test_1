@@ -9,7 +9,11 @@ const Header = () => {
     <header className="header">
       <div className="logo-container">
         <h1 className="logo">Smith Hire</h1>
+<<<<<<< HEAD
         <img src="/robert-h-smith-school-of-business-logo.png" alt="Robert H. Smith School of Business" className="smith-logo" />
+=======
+        <img src = "/robert-h-smith-school-of-business logo.png" alt="Robert H. Smith School of Business" className="smith-logo" />
+>>>>>>> b58de56de4900e64d4b3f812251cbb4c17a78d4f
       </div>
       <nav>
         <ul className="nav-links">
