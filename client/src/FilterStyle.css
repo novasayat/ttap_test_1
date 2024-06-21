@@ -38,6 +38,12 @@ body {
   border: none;
   background-color: #ddd;
   cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover {
+  background-color: #333;
+  color: white;
 }
 
 .button.active {
@@ -183,4 +189,14 @@ footer {
 .expand-exit-active {
   max-height: 0;
   opacity: 0;
+}
+
+.clear-filters-button {
+  padding: 10px;
+  margin: 10px 0; /* Adjust margins for vertical display */
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #000408; /* Link color */
+  text-decoration: Bold;
 }

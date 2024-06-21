@@ -37,20 +37,17 @@ function App() {
             <>
               <Route
                 path="/"
-                element={<Layout><Home /></Layout>}
+                element={<Layout><MultiFilters onWishlistUpdate={handleWishlistUpdate} wishlist={wishlist} /></Layout>}
               />
               <Route
-                path="/profile"
+                path="/stundent profile"
                 element={<Layout><StudentView /></Layout>}
               />
               <Route
                 path="/wishlist"
                 element={<Layout><Wishlist wishlist={wishlist} onWishlistUpdate={handleWishlistUpdate} /></Layout>}
               />
-              <Route
-                path="/faculty"
-                element={<Layout><MultiFilters onWishlistUpdate={handleWishlistUpdate} wishlist={wishlist} /></Layout>}
-              />
+
             </>
           )}
           {!user && <Route path="/" element={<Navigate replace to="/login" />} />}
