@@ -7,11 +7,8 @@ const auth = require("../middleware/authMiddleware");
 // Get all students
 router.get("/", auth, async (req, res) => {
   try {
-    console.log("Fetching all students for user:", req.user);
     const students = await Student.find();
     res.status(200).send(students);
-    console.log("Test done");
-    console.log("Student details are:", students);
   } catch (error) {
     res.status(500).send({ message: "Internal Server Error" });
   }
@@ -39,23 +36,59 @@ router.get("/filters", auth, async (req, res) => {
 });
 
 // Get wishlist for a user
+// router.get("/wishlist", auth, async (req, res) => {
+//   try {
+//     // console.log(req.user._id);
+//     const user = await User.findById(req.user._id).populate("wishlist");
+//     console.log(user.wishlist);
+//     res.status(200).send(user.wishlist);
+//   } catch (error) {
+//     res.status(500).send({ message: "Internal Server Error" });
+//   }
+// });
+
+// Get wishlist for a user
 router.get("/wishlist", auth, async (req, res) => {
   try {
-    const user = await User.findById(req.user._id).populate("wishlist");
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      return res.status(404).send({ message: "User not found" });
+    }
     res.status(200).send(user.wishlist);
   } catch (error) {
+    console.error("Error fetching wishlist:", error);
     res.status(500).send({ message: "Internal Server Error" });
   }
 });
 
 // Update wishlist for a user
+// router.post("/wishlist", auth, async (req, res) => {
+//   try {
+//     const user = await User.findById(req.user._id);
+//     user.wishlist = req.body.wishlist;
+//     console.log(req.body.wishlist);
+//     // console.log(user.populate("wishlist"));
+//     await user.save();
+//     res.status(200).send(user.wishlist);
+//   } catch (error) {
+//     res.status(500).send({ message: "Internal Server Error" });
+//   }
+// });
+
+
+// Update wishlist for a user
 router.post("/wishlist", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
+    if (!user) {
+      return res.status(404).send({ message: "User not found" });
+    }
     user.wishlist = req.body.wishlist;
+    console.log(user.wishlist);
     await user.save();
     res.status(200).send(user.wishlist);
   } catch (error) {
+    console.error("Error updating wishlist:", error);
     res.status(500).send({ message: "Internal Server Error" });
   }
 });

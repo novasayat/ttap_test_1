@@ -69,11 +69,9 @@ function MultiFilters({ onWishlistUpdate, wishlist }) {
   const fetchStudents = async () => {
     try {
       const token = localStorage.getItem("token");
-      console.log(token);
       const response = await axios.get("http://localhost:8080/api/students", {
         headers: { "x-auth-token": token }
       });
-      console.log(response.data);
       setStudents(response.data);
       setFilteredItems(response.data);
     } catch (error) {
@@ -139,6 +137,7 @@ function MultiFilters({ onWishlistUpdate, wishlist }) {
   };
 
   const handleWishlistClick = (student) => {
+    console.log(student);
     const isWishlisted = wishlist.some(item => item._id === student._id);
     let updatedWishlist;
     if (isWishlisted) {
@@ -146,7 +145,32 @@ function MultiFilters({ onWishlistUpdate, wishlist }) {
     } else {
       updatedWishlist = [...wishlist, student];
     }
+    console.log(updatedWishlist);
+    console.log(wishlist);
     onWishlistUpdate(updatedWishlist);
+    updateWishlistInBackend(updatedWishlist); // Call function to update wishlist in backend
+  };
+
+  // const updateWishlistInBackend = async (updatedWishlist) => {
+  //   try {
+  //     const token = localStorage.getItem("token");
+  //     await axios.post("http://localhost:8080/api/students/wishlist", { wishlist: updatedWishlist.map(s => s._id) }, {
+  //       headers: { "x-auth-token": token }
+  //     });
+  //   } catch (error) {
+  //     console.error("Error updating wishlist in backend:", error);
+  //   }
+  // };
+
+  const updateWishlistInBackend = async (updatedWishlist) => {
+    try {
+      const token = localStorage.getItem("token");
+      await axios.post("http://localhost:8080/api/students/wishlist", { wishlist: updatedWishlist }, {
+        headers: { "x-auth-token": token }
+      });
+    } catch (error) {
+      console.error("Error updating wishlist in backend:", error);
+    }
   };
 
   const handleClearAllFilters = () => {
