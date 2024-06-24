@@ -1,5 +1,5 @@
 body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   background-color: #f4f4f9;
   margin: 0;
   padding: 0;
@@ -24,17 +24,17 @@ body {
 .filter-group h4 {
   cursor: pointer;
   margin: 0;
-  padding: 5px 10px; /* Reduced padding */
+  padding: 5px 10px;
   background-color: #800000;
   color: white;
   border-radius: 5px;
-  font-size: 14px; /* Smaller font size */
+  font-size: 14px;
   transition: background-color 0.3s;
 }
 
 .dropdown {
   display: flex;
-  flex-direction: column; /* Change to column to display vertically */
+  flex-direction: column;
   background-color: #f8f9fa;
   border: 1px solid #ddd;
   position: absolute;
@@ -45,25 +45,18 @@ body {
 }
 
 .button {
-  padding: 8px; /* Reduced padding */
-  margin: 3px 0; /* Adjust margins for vertical display */
+  padding: 8px;
+  margin: 3px 0;
   border: none;
   background-color: #ddd;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
-<<<<<<< HEAD
   border-radius: 5px;
-  font-size: 14px; /* Smaller font size */
+  font-size: 14px;
 }
 
 .button:hover {
   background-color: #800000;
-=======
-}
-
-.button:hover {
-  background-color: #333;
->>>>>>> b58de56de4900e64d4b3f812251cbb4c17a78d4f
   color: white;
 }
 
@@ -74,8 +67,8 @@ body {
 
 .items-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .item {
@@ -119,16 +112,16 @@ body {
   border: none;
   font-size: 20px;
   cursor: pointer;
-  color: #800000; /* Dark Red color for the star */
+  color: #800000;
   transition: color 0.3s;
 }
 
 .wishlist-button.active {
-  color: #333; /* Dark color for active star */
+  color: #333;
 }
 
 .wishlist-button:hover {
-  color: #555; /* Lighten color on hover */
+  color: #555;
 }
 
 .basic-info, .expanded-profile {
@@ -139,13 +132,15 @@ body {
 }
 
 .basic-info p, .expanded-profile p {
-  margin: 5px 0;
+  margin: 10px 0;
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
   color: #333;
 }
 
 .header {
-  background-color: #800000; /* Dark Red background */
-  color: white; /* White text */
+  background-color: #800000;
+  color: white;
   padding: 10px;
   border-bottom: 1px solid #dee2e6;
 }
@@ -171,13 +166,13 @@ body {
 
 .nav-links li a {
   text-decoration: none;
-  color: white; /* White text for links */
+  color: white;
 }
 
 .nav-links li button {
   background: none;
   border: none;
-  color: white; /* White text for button */
+  color: white;
   cursor: pointer;
 }
 
@@ -196,7 +191,7 @@ footer {
 }
 
 .wishlist-container h2 {
-  color: #800000; /* Dark Red color */
+  color: #800000;
 }
 
 .wishlist-container .items-container {
@@ -239,20 +234,11 @@ footer {
 }
 
 .clear-filters-button {
-<<<<<<< HEAD
-  padding: 5px 10px; /* Reduced padding */
-=======
-  padding: 10px;
->>>>>>> b58de56de4900e64d4b3f812251cbb4c17a78d4f
-  margin: 10px 0; /* Adjust margins for vertical display */
+  padding: 5px 10px;
+  margin: 10px 0;
   border: none;
   background: none;
   cursor: pointer;
-  color: #000408; /* Link color */
+  color: #000408;
   text-decoration: Bold;
 }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> b58de56de4900e64d4b3f812251cbb4c17a78d4f

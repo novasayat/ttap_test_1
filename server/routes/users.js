@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
 router.get("/", auth, async (req, res) => {
 	try {
 		const user = await User.findById(req.user._id);
-		const users = await User.find();
+		const users = await User.find();                        // userRoutes in index.js 6th line
 		console.log(users);
 		if (!user) return res.status(404).send({ message: "User not found" });
 
