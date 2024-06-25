@@ -5,6 +5,7 @@ import Footer from './Footer';
 import MultiFilters from './MultiFilters';
 import Wishlist from './Wishlist';
 import StudentView from './StudentView'; // Import StudentView component
+import Hire from './Hire'; // Import Hire component
 import Main from './components/Main';
 import Signup from './components/Signup';
 import Login from './components/Login';
@@ -46,6 +47,10 @@ function App() {
               <Route
                 path="/wishlist"
                 element={<Layout><Wishlist wishlist={wishlist} onWishlistUpdate={handleWishlistUpdate} /></Layout>}
+              />
+              <Route
+                path="/hire"
+                element={<Layout><Hire /></Layout>}
               />
 
             </>

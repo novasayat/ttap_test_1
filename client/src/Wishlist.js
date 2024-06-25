@@ -44,6 +44,18 @@ const Wishlist = ({ onWishlistUpdate }) => {
     );
   };
 
+  const handleHire = async (student) => {
+    try {
+      const token = localStorage.getItem("token");
+      await axios.post("http://localhost:8080/api/students/hire", { student }, {
+        headers: { "x-auth-token": token }
+      });
+      alert('Student hired successfully!');
+    } catch (error) {
+      console.error("Error hiring student:", error);
+    }
+  };
+
   return (
     <div className="wishlist-container">
       <h2>Wishlist</h2>
@@ -77,6 +89,7 @@ const Wishlist = ({ onWishlistUpdate }) => {
                 <p className="category">Cover Letter: <a href={item.coverLetter} target="_blank" rel="noopener noreferrer">View Cover Letter</a></p>
               </div>
             )}
+            <button className="hire-button" onClick={() => handleHire(item)}>Hire</button>
           </div>
         ))}
       </div>

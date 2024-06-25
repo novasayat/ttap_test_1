@@ -1,0 +1,53 @@
+.hire-container {
+  padding: 20px;
+}
+
+.hire-container h2 {
+  color: #800000;
+}
+
+.items-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 15px;
+  width: 300px; /* Increased width */
+  background-color: white;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.item .category {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.profile-header p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.basic-info {
+  margin-top: 10px;
+}

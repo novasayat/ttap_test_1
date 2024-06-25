@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Student = require("../models/student");
-const { User } = require("../models/user");  // Import User model
+const { User } = require("../models/user");
 const auth = require("../middleware/authMiddleware");
 
 // Get all students
@@ -36,18 +36,6 @@ router.get("/filters", auth, async (req, res) => {
 });
 
 // Get wishlist for a user
-// router.get("/wishlist", auth, async (req, res) => {
-//   try {
-//     // console.log(req.user._id);
-//     const user = await User.findById(req.user._id).populate("wishlist");
-//     console.log(user.wishlist);
-//     res.status(200).send(user.wishlist);
-//   } catch (error) {
-//     res.status(500).send({ message: "Internal Server Error" });
-//   }
-// });
-
-// Get wishlist for a user
 router.get("/wishlist", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
@@ -62,21 +50,6 @@ router.get("/wishlist", auth, async (req, res) => {
 });
 
 // Update wishlist for a user
-// router.post("/wishlist", auth, async (req, res) => {
-//   try {
-//     const user = await User.findById(req.user._id);
-//     user.wishlist = req.body.wishlist;
-//     console.log(req.body.wishlist);
-//     // console.log(user.populate("wishlist"));
-//     await user.save();
-//     res.status(200).send(user.wishlist);
-//   } catch (error) {
-//     res.status(500).send({ message: "Internal Server Error" });
-//   }
-// });
-
-
-// Update wishlist for a user
 router.post("/wishlist", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
@@ -84,11 +57,40 @@ router.post("/wishlist", auth, async (req, res) => {
       return res.status(404).send({ message: "User not found" });
     }
     user.wishlist = req.body.wishlist;
-    console.log(user.wishlist);
     await user.save();
     res.status(200).send(user.wishlist);
   } catch (error) {
     console.error("Error updating wishlist:", error);
+    res.status(500).send({ message: "Internal Server Error" });
+  }
+});
+
+// Get hired students for a user
+router.get("/hired", auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      return res.status(404).send({ message: "User not found" });
+    }
+    res.status(200).send(user.hired);
+  } catch (error) {
+    console.error("Error fetching hired students:", error);
+    res.status(500).send({ message: "Internal Server Error" });
+  }
+});
+
+// Hire a student
+router.post("/hire", auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      return res.status(404).send({ message: "User not found" });
+    }
+    user.hired.push(req.body.student);
+    await user.save();
+    res.status(200).send(user.hired);
+  } catch (error) {
+    console.error("Error hiring student:", error);
     res.status(500).send({ message: "Internal Server Error" });
   }
 });

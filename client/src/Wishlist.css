@@ -100,6 +100,23 @@ body {
   padding-top: 10px;
 }
 
+.hire-button {
+  margin-top: 10px; /* Space between the profile info and the button */
+  padding: 5px 15px;
+  border: none;
+  background-color: #28a745; /* Green background */
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.hire-button:hover {
+  background-color: #218838; /* Darker green on hover */
+  transform: scale(1.05);
+}
+
 .header {
   background-color: #800000; /* Dark Red background */
   color: white; /* White text */

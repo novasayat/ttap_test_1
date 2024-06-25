@@ -38,9 +38,9 @@ const Main = () => {
         <nav className={styles.navbar}>
           <ul className={styles.nav_links}>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/profile">Profile</Link></li>
-            {/* <li><Link to="/faculty">Faculty View</Link></li> */}
-            <li><Link to="/wishlist">Wishlist</Link></li> 
+            {/* <li><Link to="/profile">Profile</Link></li> */}
+            <li><Link to="/wishlist">Wishlist</Link></li>
+            <li><Link to="/hire">Hire</Link></li> {/* Add the Hire link */}
           </ul>
           <div className={styles.user_menu}>
             <span>{`${user.firstName} ${user.lastName} `}<span className={styles.down_arrow}>&#9660;</span></span>
