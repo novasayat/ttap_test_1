@@ -95,4 +95,31 @@ router.post("/hire", auth, async (req, res) => {
   }
 });
 
+// Assign hours to a student
+router.post("/assign-hours", auth, async (req, res) => {
+  try {
+    const { studentId, hours } = req.body;
+    const student = await Student.findById(studentId);
+
+    if (!student) {
+      return res.status(404).send({ message: "Student not found" });
+    }
+
+    const availableHours = student.hoursAtSmith + (student.assignedHours || 0);
+    if (hours > availableHours) {
+      return res.status(400).send({ message: "Assigned hours exceed available hours" });
+    }
+
+    student.hoursAtSmith = availableHours - hours;
+    student.assignedHours = hours;
+
+    await student.save();
+
+    res.status(200).send(student);
+  } catch (error) {
+    console.error("Error assigning hours:", error);
+    res.status(500).send({ message: "Internal Server Error" });
+  }
+});
+
 module.exports = router;

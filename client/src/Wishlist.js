@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Wishlist.css";
 
-const Wishlist = ({ onWishlistUpdate }) => {
+const Wishlist = ({ onWishlistUpdate, students, setStudents }) => {
   const [wishlistedStudents, setWishlistedStudents] = useState([]);
   const [expandedProfiles, setExpandedProfiles] = useState([]);
 

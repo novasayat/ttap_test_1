@@ -3,7 +3,7 @@ import axios from "axios";
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import "./FilterStyle.css";
 
-function MultiFilters({ onWishlistUpdate, wishlist }) {
+function MultiFilters({ onWishlistUpdate, wishlist, students, setStudents }) {
   const [selectedFilters, setSelectedFilters] = useState({
     degree: [],
     courseName: [],
@@ -12,7 +12,6 @@ function MultiFilters({ onWishlistUpdate, wishlist }) {
     hoursAtSmith: []
   });
 
-  const [students, setStudents] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [dropdowns, setDropdowns] = useState({
     degree: false,
@@ -122,7 +121,7 @@ function MultiFilters({ onWishlistUpdate, wishlist }) {
         (selectedFilters.hoursAtSmith.length === 0 || selectedFilters.hoursAtSmith.includes(item.hoursAtSmith))
       );
     });
-    tempItems.sort((a, b) => a.fullName.localeCompare(b.fullName)); // Sort filtered items alphabetically by fullName
+    tempItems.sort((a, b) => b.hoursAtSmith - a.hoursAtSmith); // Sort filtered items by hoursAtSmith in desc order
     setFilteredItems(tempItems);
   };
 
@@ -137,7 +136,6 @@ function MultiFilters({ onWishlistUpdate, wishlist }) {
   };
 
   const handleWishlistClick = (student) => {
-    console.log(student);
     const isWishlisted = wishlist.some(item => item._id === student._id);
     let updatedWishlist;
     if (isWishlisted) {
@@ -145,22 +143,9 @@ function MultiFilters({ onWishlistUpdate, wishlist }) {
     } else {
       updatedWishlist = [...wishlist, student];
     }
-    console.log(updatedWishlist);
-    console.log(wishlist);
     onWishlistUpdate(updatedWishlist);
     updateWishlistInBackend(updatedWishlist); // Call function to update wishlist in backend
   };
-
-  // const updateWishlistInBackend = async (updatedWishlist) => {
-  //   try {
-  //     const token = localStorage.getItem("token");
-  //     await axios.post("http://localhost:8080/api/students/wishlist", { wishlist: updatedWishlist.map(s => s._id) }, {
-  //       headers: { "x-auth-token": token }
-  //     });
-  //   } catch (error) {
-  //     console.error("Error updating wishlist in backend:", error);
-  //   }
-  // };
 
   const updateWishlistInBackend = async (updatedWishlist) => {
     try {
@@ -239,9 +224,9 @@ function MultiFilters({ onWishlistUpdate, wishlist }) {
                   <div className="expanded-profile">
                     <p className="category">UID: {item.uid}</p>
                     <p className="category">Areas of Interest: {item.areasOfInterest}</p>
-                    <p className="category">Enrollment Date: {item.enrollmentDate}</p>                    
+                    <p className="category">Enrollment Date: {item.enrollmentDate}</p>
                     <p className="category">Education: {item.education}</p>
-                    <p className="category">Work Experience: {item.workExperience}</p>                  
+                    <p className="category">Work Experience: {item.workExperience}</p>
                     <p className="category">Hours Other Jobs: {item.hoursOtherJobs}</p>
                     <p className="category">Resume: <a href={item.resume} target="_blank" rel="noopener noreferrer">View Resume</a></p>
                     <p className="category">Cover Letter: <a href={item.coverLetter} target="_blank" rel="noopener noreferrer">View Cover Letter</a></p>

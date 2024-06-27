@@ -14,9 +14,9 @@ import Layout from './components/Faculty Layout/Layout'; // Import the Layout co
 const Home = () => <div>Home Page</div>;
 
 function App() {
-
   const user = localStorage.getItem("token");
 
+  const [students, setStudents] = useState([]); // Define the students state
   const [wishlist, setWishlist] = useState(() => {
     const savedWishlist = localStorage.getItem('wishlist');
     return savedWishlist ? JSON.parse(savedWishlist) : [];
@@ -27,22 +27,35 @@ function App() {
     localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
   };
 
+  const handleHoursUpdate = (studentId, hoursAtSmith) => {
+    setStudents((prevStudents) =>
+      prevStudents.map((student) =>
+        student._id === studentId ? { ...student, hoursAtSmith } : student
+      )
+    );
+  };
+
   return (
     <Router>
       {/* <Header /> */}
       <div>
-      <Routes>
+        <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           {user && (
             <>
               <Route
                 path="/"
-                element={<Layout><MultiFilters onWishlistUpdate={handleWishlistUpdate} wishlist={wishlist} /></Layout>}
-              />
-              <Route
-                path="/profile"
-                element={<Layout><StudentView /></Layout>}
+                element={
+                  <Layout>
+                    <MultiFilters 
+                      onWishlistUpdate={handleWishlistUpdate} 
+                      wishlist={wishlist} 
+                      students={students} 
+                      setStudents={setStudents} 
+                    />
+                  </Layout>
+                }
               />
               <Route
                 path="/wishlist"
@@ -50,9 +63,8 @@ function App() {
               />
               <Route
                 path="/hire"
-                element={<Layout><Hire /></Layout>}
+                element={<Layout><Hire students={students} setStudents={setStudents} onHoursUpdate={handleHoursUpdate} /></Layout>}
               />
-
             </>
           )}
           {!user && <Route path="/" element={<Navigate replace to="/login" />} />}

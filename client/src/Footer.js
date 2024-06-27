@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 const footerStyle = {
   backgroundColor: '#f8f9fa',
-  padding: '10px',
+  padding: '5px',
   borderTop: '1px solid #dee2e6',
   textAlign: 'center',
 };
@@ -14,7 +14,7 @@ const Footer = () => {
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
         footer.style.position = 'static';
       } else {
-        footer.style.position = 'fixed';
+        footer.style.position = 'static';
         footer.style.bottom = '0';
       }
     };
