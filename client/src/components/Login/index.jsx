@@ -18,6 +18,16 @@ const Login = () => {
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data);
 			console.log(res.data);
+			console.log(res.data.email);
+			
+			// Fetch user email after successful login
+			const userResponse = await axios.get("http://localhost:8080/api/users", {
+				headers: { "x-auth-token": res.data }
+			});
+			localStorage.setItem("email", userResponse.data.email);
+			localStorage.setItem("fullName", `${userResponse.data.firstName} ${userResponse.data.lastName}`);
+
+
 			window.location = "/";
 		} catch (error) {
 			if (

@@ -54,7 +54,7 @@ body {
   border: 1px solid #ddd;
   padding: 10px;
   margin: 10px;
-  width: 200px;
+  width: 250px; /* Adjusted width */
   background-color: #f9f9f9;
   position: relative;
 }
@@ -100,21 +100,57 @@ body {
   padding-top: 10px;
 }
 
-.hire-button {
-  margin-top: 10px; /* Space between the profile info and the button */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.hire-button,
+.email-button {
   padding: 5px 15px;
   border: none;
-  background-color: #28a745; /* Green background */
-  color: white;
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.hire-button {
+  background-color: #28a745; /* Green background */
+  color: white;
 }
 
 .hire-button:hover {
   background-color: #218838; /* Darker green on hover */
   transform: scale(1.05);
+}
+
+.hire-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  filter: invert(1); /* Invert the color to white */
+}
+
+.email-button {
+  background-color: #007bff; /* Blue background */
+  color: white;
+  margin-left: 10px; /* Add margin between the buttons */
+}
+
+.email-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.05);
+}
+
+.email-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  filter: invert(1); /* Invert the color */
 }
 
 .header {
@@ -163,4 +199,29 @@ footer {
   bottom: 0;
   width: 100%;
   text-align: center;
+}
+
+/* Add your custom animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 1s forwards;
+}
+
+/* Custom SweetAlert2 icon style */
+.swal2-icon.custom-icon .swal2-success-ring {
+  border-color: #a5dc86;
+}
+
+.swal2-icon.custom-icon .swal2-success-line-tip,
+.swal2-icon.custom-icon .swal2-success-line-long {
+  background-color: #a5dc86;
+}
+
+/* Optional: Customize the popup as needed */
+.custom-popup {
+  font-size: 1.6rem !important;
 }

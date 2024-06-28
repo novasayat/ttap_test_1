@@ -3,6 +3,10 @@ const router = express.Router();
 const Student = require("../models/student");
 const { User } = require("../models/user");
 const auth = require("../middleware/authMiddleware");
+const atob = require('atob'); // to decode Base64 encoded string
+const nodemailer = require('nodemailer'); // Import nodemailer
+const sgMail = require('@sendgrid/mail'); // Import SendGrid
+
 
 // Get all students
 router.get("/", auth, async (req, res) => {
@@ -121,5 +125,84 @@ router.post("/assign-hours", auth, async (req, res) => {
     res.status(500).send({ message: "Internal Server Error" });
   }
 });
+
+// route to send an email
+
+router.post('/send-email', auth, async (req, res) => {
+  const { student, email, fullName } = req.body;
+  const appPassword = 'hwso ciqy jpzr soms'; // Your generated app password
+
+  try {
+    // Create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+      service: 'Gmail', // You can use any email service
+      auth: {
+        user: email, // Use the logged-in user's email
+        pass: appPassword, // Use the app password
+      },
+    });
+
+    // Verify connection configuration
+    transporter.verify((error, success) => {
+      if (error) {
+        console.log('Error configuring email server:', error);
+        res.status(500).send({ message: 'Email server configuration error.' });
+        return;
+      } else {
+        console.log('Email server is ready to take our messages');
+      }
+    });
+
+    // Setup email data
+    let mailOptions = {
+      from: `"Smith Part Time" <${email}>`, // Sender address
+      to: student.email, // List of receivers
+      subject: 'Interview Invitation', // Subject line
+      text: `Dear ${student.fullName},\n\nYou have been selected for an interview call with Professor ${fullName}. Kindly check the available timings of the professor and block their calendar through Google Calendar to schedule a meet with the professor.\n\nBest Regards,\nSmith Part Time Team`,
+      html: `<p>Dear ${student.fullName},</p>
+             <p>You have been selected for an interview call with Professor ${fullName}. Kindly check the available timings of the professor and block their calendar through Google Calendar to schedule a meet with the professor.</p>
+             <p>Best Regards,<br>Smith Part Time Team</p>`
+    };
+
+    // Send mail with defined transport object
+    await transporter.sendMail(mailOptions);
+
+    res.status(200).send({ message: 'Email sent successfully!' });
+  } catch (error) {
+    console.error('Error sending email:', error);
+    res.status(500).send({ message: 'Internal Server Error' });
+  }
+});
+
+
+/**************************************** BACK UP OPTION TO SEND AN EMAIL ****************************************************/
+
+// Set SendGrid API key
+// sgMail.setApiKey(process.env.SENDGRID_API_KEY); // Make sure to set your SendGrid API key in your environment variables
+
+// router.post('/send-email', auth, async (req, res) => {
+//   const { student, email } = req.body;
+//   try {
+//     // Setup email data
+//     const msg = {
+//       to: student.email, // Recipient's email
+//       from: email, // Sender address
+//       subject: 'Invitation',
+//       text: `Dear ${student.fullName},\n\nWe would like to invite you to join our team.\n\nBest Regards,\nYour Company Name`,
+//     };
+
+//     console.log(email);
+//     console.log(student.email);
+//     // Send email
+//     await sgMail.send(msg);
+
+//     res.status(200).send({ message: 'Email sent successfully!' });
+//   } catch (error) {
+//     console.error('Error sending email:', error);
+//     res.status(500).send({ message: 'Internal Server Error' });
+//   }
+// });
+
+/**************************************** BACK UP OPTION TO SEND AN EMAIL ****************************************************/
 
 module.exports = router;

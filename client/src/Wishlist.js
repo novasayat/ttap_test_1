@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
+import emailIcon from './images/email.png'; // Ensure correct path
 import "./Wishlist.css";
 
-const Wishlist = ({ onWishlistUpdate, students, setStudents }) => {
+const Wishlist = ({ onWishlistUpdate }) => {
   const [wishlistedStudents, setWishlistedStudents] = useState([]);
   const [expandedProfiles, setExpandedProfiles] = useState([]);
+  const [selectedStudent, setSelectedStudent] = useState(null);
 
   useEffect(() => {
     fetchWishlist();
@@ -56,6 +59,49 @@ const Wishlist = ({ onWishlistUpdate, students, setStudents }) => {
     }
   };
 
+  const handleSendEmail = async (student) => {
+    try {
+      const token = localStorage.getItem("token");
+      const email = localStorage.getItem("email"); // Get logged-in user's email from localStorage
+      const fullName = localStorage.getItem("fullName"); // Get logged-in user's full name from localStorage
+      if (!email) {
+        alert("User email not found. Please log in again.");
+        return;
+      }
+
+      await axios.post("http://localhost:8080/api/students/send-email", { student, email, fullName }, {
+        headers: { "x-auth-token": token }
+      });
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Email Sent',
+        text: 'The email has been sent successfully!',
+        showConfirmButton: false,
+        timer: 3500, // Increase the timer to hold the pop-up for 2 seconds more
+        timerProgressBar: true,
+        didOpen: () => {
+          setTimeout(() => {
+            const tickMark = document.querySelector('.swal2-success-circular-line-right');
+            if (tickMark) {
+              tickMark.classList.add('fade-in');
+            }
+          }, 1000); // Delay the tick mark fade-in by 1 second more
+        },
+        customClass: {
+          popup: 'custom-popup' // Optional: Customize the popup as needed
+        }
+      });
+    } catch (error) {
+      console.error("Error sending email:", error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+      });
+    }
+  };
+
   return (
     <div className="wishlist-container">
       <h2>Wishlist</h2>
@@ -89,7 +135,13 @@ const Wishlist = ({ onWishlistUpdate, students, setStudents }) => {
                 <p className="category">Cover Letter: <a href={item.coverLetter} target="_blank" rel="noopener noreferrer">View Cover Letter</a></p>
               </div>
             )}
-            <button className="hire-button" onClick={() => handleHire(item)}>Hire</button>
+            <div className="button-group">
+              <button className="hire-button" onClick={() => handleHire(item)}>Hire</button>
+              <button className="email-button" onClick={() => handleSendEmail(item)}>
+                <img src={emailIcon} alt="Send Email" className="email-icon" />
+                Send Email Invite
+              </button>
+            </div>
           </div>
         ))}
       </div>
